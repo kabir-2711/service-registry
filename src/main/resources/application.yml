@@ -1,0 +1,34 @@
+server:
+  port: 8761
+  servlet:
+    context-path: /service-registry/
+  
+
+spring:
+  application:
+    name: service-registry
+  cache:
+    type: caffeine
+
+
+eureka:
+  instance:
+    hostname: service-registry
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      default-zone: ""
+  server:
+    enable-self-preservation: false
+    wait-time-in-ms-when-sync-empty: 0
+    
+logging:
+  level:
+    org:
+      springframework: ${loglevel.springframework:INFO}
+      hibernate: ${loglevel.hibernate:INFO}
+    com:
+      zaxxer: ${loglevel.springframework:INFO}
+      netflix:
+        discovery: ${loglevel.netflix.discovery:INFO}
